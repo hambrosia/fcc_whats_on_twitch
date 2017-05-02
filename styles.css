@@ -13,18 +13,26 @@
 }
 
 body{
-  font-family: ont-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding-top: 70px;
   padding-bottom: 20px;
   background-color: #E9EBEE;
 }
-.usericon img{
-  width: 120px;
-  height: 120px;
+
+
+
+.usericon {
+  width: 75px;
+  height: 75px;
   border-radius: 3px;
 }
+
+
+
 .userpreview img{
 margin: 30px;
+max-width:260px;
+max-height:100%;
 }
 
 
@@ -72,9 +80,11 @@ a p{
 
 #welcome-text {
   font-size: 64px;
+  color: white;
 }
 #welcome-subtitle {
   font-size: 48px;
+  color: white;
 }
 
 .twitchtile-offline{
@@ -99,16 +109,16 @@ a p{
 }
 
 .twitchtile-welcome{
-  color: #6441A5;
-  border-radius: 3px;
+  color: white;
+  border-radius: 25;
   //background-color: #F8F8F8;
-  background-color: white;
+  background-color: #6441A5;
   padding: 35px;
   margin: 10px;
-  min-height: 360px;
+  min-height: 260px;
   box-shadow: 1px 1px 3px darkgrey;
-  opacity: 0.9;
-  text-align: center;
+  opacity: 0.7;
+  text-align: center ;
 }
 
 .twitchtile-welcome:hover {
@@ -118,11 +128,4 @@ a p{
   transition: 0.6s;
   z-index: 1;
   opacity: 1;
-}
-
-
-
-.usericon{
-  width: 50px;
-  height: 50px;
 }

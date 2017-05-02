@@ -2,6 +2,8 @@ var twitchFaves = ["ESL_SC2", "drdisrespectlive", "bloodyfaster", "OgamingSC2", 
 
 
 $(function() {
+
+
   $("#favorites").on("click", function(){
     console.log("Favorites was clicked.");
     getUsers("favorite");
@@ -15,6 +17,7 @@ $(function() {
     console.log("Offline was clicked.");
     getUsers("offline");
   });
+
 
   var getUsers = function(selector){
     var userName = "";
