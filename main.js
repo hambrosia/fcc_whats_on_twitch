@@ -1,169 +1,202 @@
-var twitchFaves = ["ESL_SC2", "drdisrespectlive"];
+var twitchFaves = ["ESL_SC2", "drdisrespectlive", "bloodyfaster", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404", "daigothebeastv", "ognglobal", "lirik", "pierredunn"];
 
-//"bloodyfaster", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404", "daigothebeastv", "ognglobal"
-
-//https://wind-bow.gomix.me/twitch-api/streams/ESL_SC2
-//https://wind-bow.gomix.me/twitch-api/users/ESL_SC2
 
 $(function() {
   $("#favorites").on("click", function(){
     console.log("Favorites was clicked.");
-    getFaves();
+    getUsers("favorite");
   });
   $("#online").on("click", function(){
     console.log("Online was clicked.");
-    getOnline();
+    getUsers("online");
 
   });
   $("#offline").on("click", function(){
     console.log("Offline was clicked.");
-    //  getOffline();
+    getUsers("offline");
   });
 
+  var getUsers = function(selector){
+    var userName = "";
 
-
-  var streamData = [];
-  var userData = [];
-  var userName = "";
-
-  var getFaves = function(){
     $("#twitch-boxes").empty();
 
     for (var i = 0; i < twitchFaves.length; i++) {
       userName = twitchFaves[i];
 
-      //console.log(streamURL, userURL);
-      streamAjax(userName);
-
+      if(selector === "online"){
+        getStreamers(userName);
+      }
+      if(selector === "offline"){
+        getOfflineUsers(userName);
+      }
+      if(selector === "favorite")
+      getFavorites(userName);
     }
   }
 
 
-  var streamAjax = function(userName){
+    var getFavorites = function(userName){
 
-
-    $.ajax({
-      type        : 'GET',
-      url         :  "https://wind-bow.gomix.me/twitch-api/streams/" + userName,
-      dataType    : 'jsonp',
-      success     : function(twitchData) {
-
-        streamData = twitchData;
-
-        userAjax(userName);
-      }
-    });
-  }
-
-
-    var userAjax = function(userName){
       $.ajax({
         type        : 'GET',
-        url         :  "https://wind-bow.gomix.me/twitch-api/users/" + userName,
+        url         :  "https://wind-bow.gomix.me/twitch-api/streams/" + userName,
         dataType    : 'jsonp',
-        success     : function(twitchData) {
-
-          userData = twitchData;
-
-          /*
-          console.log("From stream",  streamData);
-          console.log(" from stream",  userData);
-
-          console.log(userData.display_name);
-          console.log(userData.bio);
-          console.log(userData.logo);
-
-          console.log(streamData.stream.average_fps);
-          console.log(streamData.stream.game);
-          */
+        success     : function(streamData) {
 
 
-          displayTwitch(streamData, userData);
+            getFaveProfiles(userName, streamData);
+
         }
       });
     }
 
-      var getOnline = function(){
-        $("#twitch-boxes").empty();
 
-        for (var i = 0; i < twitchFaves.length; i++) {
-          userName = twitchFaves[i];
 
-          streamAjaxOnline(userName);
+      var getFaveProfiles = function(userName, streamData){
+        $.ajax({
+          type        : 'GET',
+          url         :  "https://wind-bow.gomix.me/twitch-api/users/" + userName,
+          dataType    : 'jsonp',
+          success     : function(userData) {
 
-        }
+            generateFaveHTML(streamData, userData);
+          }
+        });
       }
 
-  var streamAjaxOnline = function(userName){
 
+        var generateFaveHTML = function(streamData, userData){
+
+          var bio = userData.bio;
+          var logo = userData.logo;
+          var name = userData.display_name;
+          var isStreaming = "Offline"
+
+          if(streamData.stream){
+            isStreaming = "Streaming " + streamData.stream.game ;
+          }
+
+          if (userData.bio === null){
+            bio = "I'm not very wordy.";
+          }
+          if(!userData.logo){
+            logo = "https://cdn0.iconfinder.com/data/icons/social-network-9/50/16-128.png";
+          }
+          if(!userData.display_name){
+            var name = "Oops!";
+            var bio = "We can't find the account you're looking for.";
+          }
+
+          var $newdiv1 = $( "<a href='#'><div class='twitchtile-offline col-md-6'><img class = 'usericon' src='" + logo + "'>" + "<h1>" + name + "</h1>" + "<h2>" + isStreaming + "</h2>" +  "<p>"  + bio + "</p>" + "</div></a>" );
+          $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+
+          $($newdiv1).attr("id", userData.display_name);
+
+          $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+
+        }
+
+
+
+
+  var getStreamers = function(userName){
 
     $.ajax({
       type        : 'GET',
       url         :  "https://wind-bow.gomix.me/twitch-api/streams/" + userName,
       dataType    : 'jsonp',
-      success     : function(twitchData) {
-
-        streamData = twitchData;
-        console.log(userName);
+      success     : function(streamData) {
 
         if (streamData.stream){
-          userAjaxOnline(userName);
-
+          getProfiles(userName, streamData);
         }
       }
     });
   }
 
-  var userAjaxOnline = function(userName){
+
+
+  var getProfiles = function(userName, streamData){
     $.ajax({
       type        : 'GET',
       url         :  "https://wind-bow.gomix.me/twitch-api/users/" + userName,
       dataType    : 'jsonp',
-      success     : function(twitchData) {
+      success     : function(userData) {
 
-        userData = twitchData;
-
-        /*
-        console.log("From stream",  streamData);
-        console.log(" from stream",  userData);
-
-        console.log(userData.display_name);
-        console.log(userData.bio);
-        console.log(userData.logo);
-
-        console.log(streamData.stream.average_fps);
-        console.log(streamData.stream.game);
-        */
-
-        displayTwitchOnline(streamData, userData);
+        generateHTML(streamData, userData);
       }
     });
   }
 
-    var displayTwitchOnline = function(arr1, arr2){
 
 
-      var $newdiv1 = $( "<a href='#'><div class='twitchtile col-md-6'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Playing: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p></div></a>" );
-      $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+  var generateHTML = function(streamData, userData){
 
 
-
-      $($newdiv1).attr("id", userData.display_name);
-
-      $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
-    }
-
-
-
-
-
-  var displayTwitch = function(arr1, arr2){
-
-    var $newdiv1 = $( "<a href='" + "https://www.twitch.tv/" + userData.display_name +"'>" +  "<div class='twitchtile col-md-6'>" + "<img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<p>"  + userData.bio + "</p>" +  "</div></a>" );
+    var $newdiv1 = $( "<a href='#'><div class='twitchtile col-md-6'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Streaming: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p>" +
+    "<img class = 'userpreview' src='" + streamData.stream.preview.medium + "'>" + "</div></a>" );
+    $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
 
     $($newdiv1).attr("id", userData.display_name);
+
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+
   }
 
 
+
+
+var getOfflineUsers = function(userName){
+
+  $.ajax({
+    type        : 'GET',
+    url         :  "https://wind-bow.gomix.me/twitch-api/streams/" + userName,
+    dataType    : 'jsonp',
+    success     : function(streamData) {
+
+      if (!streamData.stream){
+        getOfflineProfiles(userName, streamData);
+      }
+    }
+  });
+}
+
+
+var getOfflineProfiles = function(userName, streamData){
+  $.ajax({
+    type        : 'GET',
+    url         :  "https://wind-bow.gomix.me/twitch-api/users/" + userName,
+    dataType    : 'jsonp',
+    success     : function(userData) {
+
+      generateOfflineHTML(streamData, userData);
+    }
+  });
+}
+
+
+  var generateOfflineHTML = function(streamData, userData){
+
+    var bio = userData.bio;
+    var logo = userData.logo;
+    var name = userData.display_name;
+    var isStreaming = "Offline"
+
+
+    if (userData.bio === null){
+      bio = "I'm not very wordy.";
+    }
+    if(!userData.logo){
+      logo = "https://cdn0.iconfinder.com/data/icons/social-network-9/50/16-128.png";
+    }
+    if(!userData.display_name){
+      var name = "Oops!";
+      var bio = "We can't find the account you're looking for.";
+    }
+
+    var $newdiv1 = $( "<a href='#'><div class='twitchtile-offline col-md-6'><img class = 'usericon' src='" + logo + "'>" + "<h1>" + name + "</h1>" + "<h2>" + isStreaming + "</h2>" +  "<p>"  + bio + "</p>" + "</div></a>" );
+    $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+
+  }
 });

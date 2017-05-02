@@ -116,7 +116,7 @@ $(function() {
             var userBio = twitchData.bio;
           }
 
-          if(twitchData.display_name == null){
+          if(!twitchData.display_name){
             userBio = "This profile is inactive or deleted."
           }
 
@@ -195,3 +195,13 @@ var getData = function(){
 
 }
 getData();
+
+
+// online output display jquery
+
+      var $newdiv1 = $( "<a href='#'><div class='twitchtile col-md-6'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Playing: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p></div></a>" );
+      $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+
+            $($newdiv1).attr("id", userData.display_name);
+
+            $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
