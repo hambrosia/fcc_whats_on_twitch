@@ -21,20 +21,6 @@ body{
 
 
 
-.usericon {
-  width: 40px;
-  height: 40px;
-  border-radius: 3px;
-}
-
-
-
-.userpreview {
-margin: 20px;
-width:230px;
-}
-
-
 h1{
   font-size: 24px;
   display: inline;
@@ -77,27 +63,72 @@ a p{
   opacity: 1;
 }
 
+
 .twitchtile h1{
   font-size: 22px;
 }
 
-#loading img{
-  position: absolute;
-     margin: auto;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
+
+.usericon {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
 }
 
-#welcome-text {
-  font-size: 64px;
-  color: white;
+
+
+.userpreview {
+margin: 20px;
+width:230px;
 }
-#welcome-subtitle {
-  font-size: 48px;
-  color: white;
+
+.twitchtile-welcome{
+  font-family: 'Pacifico', cursive;
+  //color: #4B367C; // twitch purple
+  color: #F8F8F8;
+  border-radius: 25px;
+  //background-color: #F8F8F8;
+  background-color: #6441A5; // twitch purple
+  margin: 10px;
+  margin-top: 30px;
+  min-height: 350px;
+  max-width: 750px;
+  box-shadow: 1px 1px 3px darkgrey;
+  padding: 40px;
+  text-align: center ;
+
 }
+
+.twitchtile-welcome:hover {
+  -webkit-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
+  transition: 0.6s;
+  z-index: 1;
+}
+
+.twitchtile-welcome h1{
+  text-shadow: 2px 2px 2px darkgrey;
+  margin-top: 30px;
+  color: #F8F8F8;
+  font-size: 72px;
+  display: block;
+}
+
+.twitchtile-welcome p{
+  color: #F8F8F8;
+  font-family: 'Baloo', cursive;
+
+}
+
+.twitchtile-welcome h3{
+  color: #F8F8F8;
+  font-family: 'Baloo', cursive;
+  margin-top: 20px;
+
+}
+
+
 
 .twitchtile-offline{
   border-radius: 3px;
@@ -120,24 +151,17 @@ a p{
   opacity: 1;
 }
 
-.twitchtile-welcome{
-  color: white;
-  border-radius: 25;
-  //background-color: #F8F8F8;
-  background-color: #6441A5;
-  padding: 35px;
-  margin: 10px;
-  min-height: 260px;
-  box-shadow: 1px 1px 3px darkgrey;
-  opacity: 0.7;
-  text-align: center ;
+#loading img{
+  position: absolute;
+     margin: auto;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
 }
 
-.twitchtile-welcome:hover {
-  -webkit-transform: scale(1.03);
-  -ms-transform: scale(1.03);
-  transform: scale(1.03);
-  transition: 0.6s;
-  z-index: 1;
-  opacity: 1;
+#nav-sitename{
+  font-family: 'Pacifico', cursive;
+  color:  #6441A5;
+
 }

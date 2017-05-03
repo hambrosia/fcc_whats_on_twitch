@@ -1,4 +1,4 @@
-var twitchFaves = ["ESL_SC2", "drdisrespectlive", "bloodyfaster", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404", "daigothebeastv", "ognglobal", "lirik", "pierredunn"];
+var twitchFaves = ["ESL_SC2", "drdisrespectlive", "bloodyfaster", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "daigothebeastv", "ognglobal", "lirik", "pierredunn", "bikeman", "WSHand", "sourkoolaidshow"];
 
 
 $(function() {
@@ -31,6 +31,12 @@ $(function() {
     $("#loading").show();
     console.log("Offline was clicked.");
     getUsers("offline");
+  });
+  $("#welcome-button").on("click", function(){
+    $("#loading").show();
+    console.log("Online was clicked.");
+    getUsers("online");
+
   });
 
 
@@ -160,7 +166,7 @@ $(function() {
   var generateHTML = function(streamData, userData){
 
 
-    var $newdiv1 = $( "<a href='" + "https://www.twitch.tv/" + name + "'><div class='twitchtile col-md-4'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Streaming: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p>" +
+    var $newdiv1 = $( "<a href='" + "https://www.twitch.tv/" + userData.display_name + "'><div class='twitchtile col-md-4'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Streaming: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p>" +
     "<img class ='userpreview' src='" + streamData.stream.preview.medium + "'>" + "</div></a>" );
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
 
