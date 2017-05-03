@@ -10,7 +10,7 @@ $(function() {
 
    });
    $(document).ajaxComplete(function(){
-     $("#loading").hide();
+     $("#loading").fadeOut( "slow" );
    });
 
 
@@ -116,7 +116,7 @@ $(function() {
 
           $($newdiv1).attr("id", userData.display_name);
 
-          $("#loading").hide();
+          $("#loading").fadeOut( "slow" );
 
 
           $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
@@ -165,7 +165,7 @@ $(function() {
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
 
     $($newdiv1).attr("id", userData.display_name);
-    $("#loading").hide();
+    $("#loading").fadeOut( "slow" );
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
 
   }
@@ -222,8 +222,8 @@ var getOfflineProfiles = function(userName, streamData){
     }
 
     var $newdiv1 = $( "<a href='" + "https://www.twitch.tv/" + name + "'><div class='twitchtile-offline col-md-4'><img class = 'usericon' src='" + logo + "'>" + "<h1>" + name + "</h1>" + "<h2>" + isStreaming + "</h2>" +  "<p>"  + bio + "</p>" + "</div></a>" );
+    $("#loading").fadeOut( 1600, complete );
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
-    $("#loading").hide();
 
 
   }
