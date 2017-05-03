@@ -222,7 +222,7 @@ var getOfflineProfiles = function(userName, streamData){
     }
 
     var $newdiv1 = $( "<a href='" + "https://www.twitch.tv/" + name + "'><div class='twitchtile-offline col-md-4'><img class = 'usericon' src='" + logo + "'>" + "<h1>" + name + "</h1>" + "<h2>" + isStreaming + "</h2>" +  "<p>"  + bio + "</p>" + "</div></a>" );
-    $("#loading").fadeOut( 1600, complete );
+    $("#loading").fadeOut( "slow");
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
 
 
