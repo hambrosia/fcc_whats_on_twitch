@@ -1,16 +1,16 @@
 
 #container{
-  max-width: 960px;
+  max-width: 1150px;
   margin:auto;
-  padding: 30px;
+  padding: 10px;
   min-height: 600px;
   background-image: url(https://blog.roblox.com/wp-content/uploads/2016/12/Twitch-Icon.png);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-
 }
+
 
 body{
   font-family: 'Roboto', sans-serif;
@@ -22,24 +22,23 @@ body{
 
 
 .usericon {
-  width: 75px;
-  height: 75px;
+  width: 40px;
+  height: 40px;
   border-radius: 3px;
 }
 
 
 
-.userpreview img{
-margin: 30px;
-max-width:260px;
-max-height:100%;
+.userpreview {
+margin: 20px;
+width:230px;
 }
 
 
 h1{
-  font-size: 26px;
+  font-size: 24px;
   display: inline;
-  margin: 20px;
+  margin: 12px;
   margin-top: 50px;
   color: #365899;
 }
@@ -61,9 +60,9 @@ a p{
   border-radius: 3px;
   //background-color: #F8F8F8;
   background-color: white;
-  padding: 35px;
+  padding: 25px;
   margin: 10px;
-  max-width: 440px;
+  max-width: 360px;
   height: 460px;
   box-shadow: 1px 1px 3px darkgrey;
   opacity: 0.9;
@@ -76,6 +75,19 @@ a p{
   transition: 0.6s;
   z-index: 1;
   opacity: 1;
+}
+
+.twitchtile h1{
+  font-size: 22px;
+}
+
+#loading img{
+  position: absolute;
+     margin: auto;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
 }
 
 #welcome-text {
@@ -93,8 +105,8 @@ a p{
   background-color: white;
   padding: 35px;
   margin: 10px;
-  max-width: 440px;
-  min-height: 320px;
+  max-width: 360px;
+  height: 375px;
   box-shadow: 1px 1px 3px darkgrey;
   opacity: 0.9;
 }
