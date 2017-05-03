@@ -124,8 +124,11 @@ $(function() {
 
           $("#loading").fadeOut( "slow" );
 
-
-          $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+          if(streamData.stream){
+            $( "#twitch-boxes" ).prepend( $newdiv1 ).hide().fadeIn(500);
+          } else{
+            $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
+          }
 
         }
 
