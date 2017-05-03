@@ -3,6 +3,7 @@ var twitchFaves = ["ESL_SC2", "drdisrespectlive", "bloodyfaster", "OgamingSC2", 
 
 $(function() {
 
+  $("#container").css("background-image", "url()");
   $("#loading").hide();
 
   $(document).ajaxStart(function(){
@@ -17,23 +18,27 @@ $(function() {
 
   $("#favorites").on("click", function(){
     $("#loading").show();
+    $("#container").css("background-image", "url(twitch_background.png)");
     console.log("Favorites was clicked.");
     getUsers("favorite");
 
   });
   $("#online").on("click", function(){
     $("#loading").show();
+    $("#container").css("background-image", "url(twitch_background.png)");
     console.log("Online was clicked.");
     getUsers("online");
 
   });
   $("#offline").on("click", function(){
     $("#loading").show();
+    $("#container").css("background-image", "url(twitch_background.png)");
     console.log("Offline was clicked.");
     getUsers("offline");
   });
   $("#welcome-button").on("click", function(){
     $("#loading").show();
+    $("#container").css("background-image", "url(twitch_background.png)");
     console.log("Online was clicked.");
     getUsers("online");
 
