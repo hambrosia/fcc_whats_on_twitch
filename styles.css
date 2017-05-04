@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 0 auto;
-  padding: 2%;
+  padding: 3%;
 }
 
 
@@ -48,8 +48,10 @@ a p{
   background-color: white;
   padding: 25px;
   height: 490px;
-  box-shadow: 1px 1px 3px darkgrey;
+  //box-shadow: 1px 1px 3px darkgrey;
   opacity: 0.9;
+  background-clip: padding-box;
+  border: 10px solid transparent;
 }
 
 
@@ -75,13 +77,7 @@ a p{
 
 
 
-.userpreview {
-margin: auto;
-display: block;
-width: 70%;
-height: auto;
-border-radius: 5px;
-}
+
 
 .twitchtile-welcome{
   font-family: 'Pacifico', cursive;
@@ -141,8 +137,9 @@ border-radius: 5px;
   //margin: 10px;
   //max-width: 360px;
   height: 375px;
-  box-shadow: 1px 1px 3px darkgrey;
   opacity: 0.9;
+  background-clip: padding-box;
+  border: 10px solid transparent;
 }
 
 .twitchtile-offline:hover {
@@ -167,4 +164,7 @@ border-radius: 5px;
   font-family: 'Pacifico', cursive;
   color:  #6441A5;
 
+}
+
+.inner-box{
 }

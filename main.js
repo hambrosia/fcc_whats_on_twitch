@@ -174,8 +174,8 @@ $(function() {
   var generateHTML = function(streamData, userData){
 
 
-    var $newdiv1 = $( "<div class='padder'><a href='" + "https://www.twitch.tv/" + userData.display_name + "'><div class='twitchtile col-md-4'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Streaming: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p>" +
-    "<img class ='userpreview' src='" + streamData.stream.preview.medium + "'>" + "</div></a></di>" );
+    var $newdiv1 = $( "<a href='" + "https://www.twitch.tv/" + userData.display_name + "'><div class='twitchtile col-md-4'><div class='inner-box'><img class = 'usericon' src='" + userData.logo + "'>" + "<h1>" + userData.display_name + "</h1>" + "<h2>Streaming: " + streamData.stream.game + "</h2>" + "<p>"  + streamData.stream.channel.status + "</p>" +
+    "<img class ='userpreview img-responsive' src='" + streamData.stream.preview.medium + "'>" + "</div></a></div>" );
     $( "#twitch-boxes" ).append( $newdiv1 ).hide().fadeIn(500);
 
     $($newdiv1).attr("id", userData.display_name);
