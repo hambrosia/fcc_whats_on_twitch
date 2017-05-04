@@ -1,13 +1,14 @@
 
+
 #container{
-  max-width: 1150px;
-  margin:auto;
-  padding: 10px;
+  //max-width: 1150px;
   min-height: 600px;
   background-image: url(twitch_background.png);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin: 0 auto;
+  padding: 2%;
 }
 
 
@@ -46,12 +47,11 @@ a p{
   //background-color: #F8F8F8;
   background-color: white;
   padding: 25px;
-  margin: 10px;
-  max-width: 360px;
-  height: 460px;
+  height: 490px;
   box-shadow: 1px 1px 3px darkgrey;
   opacity: 0.9;
 }
+
 
 .twitchtile:hover {
   -webkit-transform: scale(1.03);
@@ -67,7 +67,6 @@ a p{
   font-size: 22px;
 }
 
-
 .usericon {
   width: 40px;
   height: 40px;
@@ -77,8 +76,11 @@ a p{
 
 
 .userpreview {
-margin: 20px;
-width:230px;
+margin: auto;
+display: block;
+width: 70%;
+height: auto;
+border-radius: 5px;
 }
 
 .twitchtile-welcome{
@@ -88,15 +90,17 @@ width:230px;
   border-radius: 25px;
   //background-color: #F8F8F8;
   background-color: #6441A5; // twitch purple
-  margin: 10px;
-  margin-top: 30px;
+  //margin-top: 30px;
   min-height: 350px;
-  max-width: 750px;
   box-shadow: 1px 1px 3px darkgrey;
   padding: 40px;
   text-align: center ;
-
-}
+  margin: auto;
+  position: absolute;
+    left:0;
+    right: 0;
+    top: 20%;
+    bottom: auto;}
 
 .twitchtile-welcome:hover {
   -webkit-transform: scale(1.03);
@@ -110,13 +114,13 @@ width:230px;
   text-shadow: 2px 2px 2px darkgrey;
   margin-top: 30px;
   color: #F8F8F8;
-  font-size: 72px;
-  display: block;
+  font-size: 86px;
 }
 
 .twitchtile-welcome p{
   color: #F8F8F8;
   font-family: 'Baloo', cursive;
+  font-size: 18px;
 
 }
 
@@ -134,8 +138,8 @@ width:230px;
   //background-color: #F8F8F8;
   background-color: white;
   padding: 35px;
-  margin: 10px;
-  max-width: 360px;
+  //margin: 10px;
+  //max-width: 360px;
   height: 375px;
   box-shadow: 1px 1px 3px darkgrey;
   opacity: 0.9;
